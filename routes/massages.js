@@ -16,7 +16,11 @@ router.get('/', db.getMassages,  (req, res) => {
 
 router.post('/', notImplemented);
 router.get('/new', notImplemented);
-router.get('/:id', notImplemented);
+
+router.get('/:id', db.getMassage, (req, res) => {
+  res.render('massages/show', {massage: res.rows[0]});
+});
+
 router.get('/:id/edit', notImplemented);
 router.put('/:id', notImplemented);
 router.delete('/:id', notImplemented);
