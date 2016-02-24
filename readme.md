@@ -19,3 +19,8 @@
 3. Implement db CRUD functionality
 4. Make forms to crud massages
 5. Connect everything
+
+## Step 4
+
+1. Create the masseuists REST router
+2. Implement full CRUD on masseuists
