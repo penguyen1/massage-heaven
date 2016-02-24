@@ -33,27 +33,27 @@ module.exports.getMasseuists = (req, res, next) => {
   });
 };
 
-// module.exports.getMassage = (req, res, next) => {
-//   pg.connect(config, (err, client, done) => {
-//     if (err) {
-//       done();
-//       console.log(err);
-//       res.status(500).json({success: false, data: err});
-//     }
+module.exports.getMasseuist = (req, res, next) => {
+  pg.connect(config, (err, client, done) => {
+    if (err) {
+      done();
+      console.log(err);
+      res.status(500).json({success: false, data: err});
+    }
 
-//     client.query('SELECT * FROM massages WHERE id = $1', [req.params.id], (err, results) => {
-//       done();
+    client.query('SELECT masseuists.name as name, array_agg(massages.name) as massages FROM masseuists LEFT JOIN proficiencies on proficiencies.masseuist_id = masseuists.id LEFT JOIN massages on proficiencies.massage_id = massages.id WHERE masseuists.id = $1 GROUP BY masseuists.name;', [req.params.id], (err, results) => {
+      done();
       
-//       if (err) {
-//         console.error('Error with query', err);
-//       }
+      if (err) {
+        console.error('Error with query', err);
+      }
 
-//       res.rows = results.rows;
-//       next();      
-//     });
-//   });
+      res.rows = results.rows;
+      next();      
+    });
+  });
   
-// };
+};
 
 // module.exports.createMassage = (req, res, next) => {
 //   pg.connect(config, (err, client, done) => {

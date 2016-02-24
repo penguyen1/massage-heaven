@@ -1,0 +1,23 @@
+<!doctype html>
+
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body>
+  <div class="container">
+    <div class="masseuist">
+      <h2>Masseuist #<span><%= masseuist.id %></span></h2>
+      <% include _show %>
+      <h3>Massages:</h3>
+      <ul>
+        <% masseuist.massages.forEach((massage) => { %>
+          <li> <%= massage %> </li>
+        <% }); %>
+      </ul>
+    </div>
+    <div class="back">
+      <a href="/masseuists"><button>All Masseuists</button></a>
+    </div>
+  </div>
+</body>

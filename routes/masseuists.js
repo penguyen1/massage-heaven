@@ -22,9 +22,9 @@ router.get('/', db.getMasseuists,  (req, res) => {
 //   res.render('masseuists/new', {masseuist: {name: ''}});
 // });
 
-// router.get('/:id', db.getMasseuist, (req, res) => {
-//   res.render('masseuists/show', {masseuist: res.rows[0]});
-// });
+router.get('/:id', db.getMasseuist, (req, res) => {
+  res.render('masseuists/show', {masseuist: res.rows[0]});
+});
 
 // router.get('/:id/edit', db.getMasseuist, (req, res) => {
 //   res.render('masseuists/edit', {masseuist: res.rows[0]});
