@@ -27,7 +27,7 @@ module.exports.getMassages = (req, res, next) => {
         console.error('Error with query', err);
       }
 
-      res.rows = results.rows;
+      res.massages = results.rows;
       next();      
     });
   });
@@ -48,7 +48,7 @@ module.exports.getMassage = (req, res, next) => {
         console.error('Error with query', err);
       }
 
-      res.rows = results.rows;
+      res.massages = results.rows;
       next();      
     });
   });
@@ -70,7 +70,7 @@ module.exports.createMassage = (req, res, next) => {
         console.error('Error with query', err);
       }
 
-      res.rows = results.rows;
+      res.massages = results.rows;
       next();      
     });
   });

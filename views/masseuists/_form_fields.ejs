@@ -3,7 +3,7 @@
 <br>
 
 <% massages.forEach((massage) => { %>
-  <input type="checkbox" id="<%= massage.name %>" name="massages" value="<%= massage.id %>">
+  <input type="checkbox" id="<%= massage.name %>" name="massages" value="<%= massage.id %>" <%= (masseuist.massages.indexOf(massage.name) !== -1 ? 'checked' : '') %>>
   <label for="<%= massage.id %>"> <%= massage.name %></label>
   <br>
 <% }); %>

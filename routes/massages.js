@@ -11,11 +11,11 @@ var notImplemented = (req, res) => {
 };
 
 router.get('/', db.getMassages,  (req, res) => {
-  res.render('massages/index', {massages: res.rows});
+  res.render('massages/index', {massages: res.massages});
 });
 
 router.post('/', db.createMassage, (req, res) => {
-  res.redirect(`./${res.rows[0].id}`);
+  res.redirect(`massages/${res.massages[0].id}`);
 });
 
 router.get('/new', (req, res) => {
@@ -23,11 +23,11 @@ router.get('/new', (req, res) => {
 });
 
 router.get('/:id', db.getMassage, (req, res) => {
-  res.render('massages/show', {massage: res.rows[0]});
+  res.render('massages/show', {massage: res.massages[0]});
 });
 
 router.get('/:id/edit', db.getMassage, (req, res) => {
-  res.render('massages/edit', {massage: res.rows[0]});
+  res.render('massages/edit', {massage: res.massages[0]});
 });
 
 router.put('/:id', db.editMassage, (req, res) => {
