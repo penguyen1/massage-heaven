@@ -7,7 +7,7 @@
 <body>
   <div class="container">
     <h2>Edit massage #<span><%= massage.id %></span></h2>
-    <form action="/massages/:id?_method=PUT" method="POST">
+    <form action="/massages/<%= massage.id %>?_method=PUT" method="POST">
       <% include _form_fields %>
     </form>
   </div>

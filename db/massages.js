@@ -62,7 +62,7 @@ module.exports.createMassage = (req, res, next) => {
       console.log(err);
       res.status(500).json({success: false, data: err});
     }
-    console.log(req.body);
+
     client.query('INSERT INTO massages (name) VALUES ($1) RETURNING id', [req.body.name], (err, results) => {
       done();
       
@@ -73,6 +73,29 @@ module.exports.createMassage = (req, res, next) => {
       res.rows = results.rows;
       next();      
     });
+  });
+  
+};
+
+module.exports.editMassage = (req, res, next) => {
+  pg.connect(config, (err, client, done) => {
+    if (err) {
+      done();
+      console.log(err);
+      res.status(500).json({success: false, data: err});
+    }
+    console.log(req.body);
+
+    client.query('UPDATE massages SET name = $1 WHERE id = $2', [req.body.name, req.params.id], (err, results) => {
+      done();
+      
+      if (err) {
+        console.error('Error with query', err);
+      }
+
+      next();      
+    });
+
   });
   
 };

@@ -30,7 +30,10 @@ router.get('/:id/edit', db.getMassage, (req, res) => {
   res.render('massages/edit', {massage: res.rows[0]});
 });
 
-router.put('/:id', notImplemented);
+router.put('/:id', db.editMassage, (req, res) => {
+  res.status(303).redirect(`/massages/${req.params.id}`);
+});
+
 router.delete('/:id', notImplemented);
 
 module.exports = router;
