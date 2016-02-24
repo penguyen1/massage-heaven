@@ -4,12 +4,16 @@
 
 var express = require('express');
 var router = express.Router();
+var db = require('../db/massages');
 
 var notImplemented = (req, res) => {
   res.send(req.method + ' massages is not implemted');
 };
 
-router.get('/', notImplemented);
+router.get('/', db.getMassages,  (req, res) => {
+  res.send(res.rows);
+});
+
 router.post('/', notImplemented);
 router.get('/new', notImplemented);
 router.get('/:id', notImplemented);
