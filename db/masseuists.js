@@ -127,28 +127,27 @@ module.exports.editMasseuist = (req, res, next) => {
   
 };
 
-// module.exports.deleteMassage = (req, res, next) => {
-//   pg.connect(config, (err, client, done) => {
-//     if (err) {
-//       done();
-//       console.log(err);
-//       res.status(500).json({success: false, data: err});
-//     }
+module.exports.deleteMasseuist = (req, res, next) => {
+  pg.connect(config, (err, client, done) => {
+    if (err) {
+      done();
+      console.log(err);
+      res.status(500).json({success: false, data: err});
+    }
 
 
-//     client.query('DELETE FROM massages WHERE id = $1', [req.params.id], (err, results) => {
-//       done();
-      
-//       if (err) {
-//         console.error('Error with query', err);
-//       }
+    client.query('DELETE FROM masseuists WHERE id = $1', [req.params.id], (err, results) => {
+      done();
+      if (err) {
+        console.error('Error with query', err);
+      }
 
-//       next();      
-//     });
+      next();
+    });
 
-//   });
+  });
   
-// };
+};
 
 
 

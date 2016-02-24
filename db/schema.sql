@@ -14,7 +14,7 @@ CREATE TABLE massages (
 );
 
 CREATE TABLE proficiencies (
-       masseuist_id INTEGER REFERENCES masseuists (id),
-       massage_id INTEGER REFERENCES massages (id),
+       masseuist_id INTEGER REFERENCES masseuists (id) ON DELETE CASCADE,
+       massage_id INTEGER REFERENCES massages (id) ON DELETE CASCADE,
        PRIMARY KEY (masseuist_id, massage_id)
 );
