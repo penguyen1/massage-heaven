@@ -15,7 +15,7 @@ router.get('/', db.getMassages,  (req, res) => {
 });
 
 router.post('/', db.createMassage, (req, res) => {
-  res.redirect(`/massages/${res.rows[0].id}`);
+  res.redirect(`./${res.rows[0].id}`);
 });
 
 router.get('/new', (req, res) => {
@@ -34,6 +34,8 @@ router.put('/:id', db.editMassage, (req, res) => {
   res.status(303).redirect(`/massages/${req.params.id}`);
 });
 
-router.delete('/:id', notImplemented);
+router.delete('/:id', db.deleteMassage, (req, res) => {
+  res.redirect('./');
+});
 
 module.exports = router;
