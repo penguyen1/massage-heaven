@@ -1,0 +1,15 @@
+<!doctype html>
+
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Create a new masseuist</h2>
+    <form action="/masseuists" method="post">
+      <% include _form_fields %>
+    </form>
+    <a href="/masseuists"><button>Cancel</button></a>
+  </div>
+</body>

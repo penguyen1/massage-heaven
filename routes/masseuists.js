@@ -5,6 +5,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../db/masseuists');
+var massages = require('../db/massages.js');
 
 var notImplemented = (req, res) => {
   res.send(req.method + ' massages is not implemted');
@@ -18,9 +19,9 @@ router.get('/', db.getMasseuists,  (req, res) => {
 //   res.redirect(`./${res.rows[0].id}`);
 // });
 
-// router.get('/new', (req, res) => {
-//   res.render('masseuists/new', {masseuist: {name: ''}});
-// });
+router.get('/new', massages.getMassages, (req, res) => {
+  res.render('masseuists/new', {masseuist: {name: ''}, massages: res.rows});
+});
 
 router.get('/:id', db.getMasseuist, (req, res) => {
   res.render('masseuists/show', {masseuist: res.rows[0]});

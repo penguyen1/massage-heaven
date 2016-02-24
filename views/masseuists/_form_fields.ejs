@@ -1,0 +1,11 @@
+<label for="name">Name:</label>
+<input type="text" placeholder="name" name="name" value="<%= masseuist.name %>">
+<br>
+
+<% massages.forEach((massage) => { %>
+  <input type="checkbox" id="<%= massage.name %>" name="massages" value="<%= massage.id %>">
+  <label for="<%= massage.id %>"> <%= massage.name %></label>
+  <br>
+<% }); %>
+
+<input type="submit" value="Submit">
