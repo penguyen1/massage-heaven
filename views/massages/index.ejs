@@ -1,0 +1,15 @@
+<!doctype html>
+
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body>
+  <div class="container">
+    <ul>
+      <% massages.forEach((massage) => { %>
+        <li> <% include show %> </li>
+      <% }); %>
+    </ul>
+  </div>
+</body>

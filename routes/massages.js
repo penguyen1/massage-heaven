@@ -11,7 +11,7 @@ var notImplemented = (req, res) => {
 };
 
 router.get('/', db.getMassages,  (req, res) => {
-  res.send(res.rows);
+  res.render('massages/index', {massages: res.rows});
 });
 
 router.post('/', notImplemented);
