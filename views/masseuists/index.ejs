@@ -1,0 +1,17 @@
+<!doctype html>
+
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Available Masseuists</h2>
+    <a href="/masseuists/new"><button>Create a New Masseuist</button></a>
+    <ul>
+      <% masseuists.forEach((masseuist) => { %>
+        <li> <% include _show %> </li>
+      <% }); %>
+    </ul>
+  </div>
+</body>

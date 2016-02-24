@@ -11,6 +11,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
 var massagesRouter = require('./routes/massages');
+var masseuistsRouter = require('./routes/masseuists');
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/massages', massagesRouter);
+app.use('/masseuists', masseuistsRouter);
 
    
 app.listen(process.env.PORT, function() {
