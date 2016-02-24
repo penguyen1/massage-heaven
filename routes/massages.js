@@ -26,7 +26,10 @@ router.get('/:id', db.getMassage, (req, res) => {
   res.render('massages/show', {massage: res.rows[0]});
 });
 
-router.get('/:id/edit', notImplemented);
+router.get('/:id/edit', db.getMassage, (req, res) => {
+  res.render('massages/edit', {massage: res.rows[0]});
+});
+
 router.put('/:id', notImplemented);
 router.delete('/:id', notImplemented);
 
