@@ -15,7 +15,10 @@ router.get('/', db.getMassages,  (req, res) => {
 });
 
 router.post('/', notImplemented);
-router.get('/new', notImplemented);
+
+router.get('/new', (req, res) => {
+  res.render('massages/new', {massage: {name: ''}});
+});
 
 router.get('/:id', db.getMassage, (req, res) => {
   res.render('massages/show', {massage: res.rows[0]});
