@@ -15,9 +15,10 @@ router.get('/', db.getMasseuists,  (req, res) => {
   res.render('masseuists/index', {masseuists: res.rows});
 });
 
-// router.post('/', db.createMasseuist, (req, res) => {
-//   res.redirect(`./${res.rows[0].id}`);
-// });
+router.post('/', db.createMasseuist, (req, res) => {
+
+  res.redirect(`masseuists/${res.rows[0].id}`);
+});
 
 router.get('/new', massages.getMassages, (req, res) => {
   res.render('masseuists/new', {masseuist: {name: ''}, massages: res.rows});

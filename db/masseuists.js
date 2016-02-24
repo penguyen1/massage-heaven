@@ -55,27 +55,42 @@ module.exports.getMasseuist = (req, res, next) => {
   
 };
 
-// module.exports.createMassage = (req, res, next) => {
-//   pg.connect(config, (err, client, done) => {
-//     if (err) {
-//       done();
-//       console.log(err);
-//       res.status(500).json({success: false, data: err});
-//     }
+module.exports.createMasseuist = (req, res, next) => {
+  pg.connect(config, (err, client, done) => {
+    if (err) {
+      done();
+      console.log(err);
+      res.status(500).json({success: false, data: err});
+    }
 
-//     client.query('INSERT INTO massages (name) VALUES ($1) RETURNING id', [req.body.name], (err, results) => {
-//       done();
+    console.log(req.body);
+    client.query('INSERT INTO masseuists (name) VALUES ($1) RETURNING id', [req.body.name], (err, results) => {
       
-//       if (err) {
-//         console.error('Error with query', err);
-//       }
+      if (err) {
+        console.error('Error with query', err);
+      }
 
-//       res.rows = results.rows;
-//       next();      
-//     });
-//   });
+      res.rows = results.rows;
+      
+      req.body.massages.forEach((massage, index) => {
+        client.query('INSERT INTO proficiencies (masseuist_id, massage_id) VALUES ($1, $2)', [results.rows[0].id, parseInt(massage)], (err, results) => {
+          if (err) {
+            console.error('Error with query', err);
+          }
+
+          if (index === req.body.massages.length - 1) {
+            done();
+            next();
+          }
+        });
+      });
+      
+
+
+    });
+  });
   
-// };
+};
 
 // module.exports.editMassage = (req, res, next) => {
 //   pg.connect(config, (err, client, done) => {
