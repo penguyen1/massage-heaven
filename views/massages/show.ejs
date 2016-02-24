@@ -1,1 +1,17 @@
-<%= massage.name %>
+<!doctype html>
+
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body>
+  <div class="container">
+    <div class="massage">
+      <h2>Massage #<span><%= massage.id %></span></h2>
+      <% include _show %>
+    </div>
+    <div class="back">
+      <a href="/massages"><button>All Massages</button></a>
+    </div>
+  </div>
+</body>
