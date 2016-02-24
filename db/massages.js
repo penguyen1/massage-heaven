@@ -20,7 +20,7 @@ module.exports.getMassages = (req, res, next) => {
       res.status(500).json({success: false, data: err});
     }
 
-    client.query('SELECT * FROM massages', (err, results) => {
+    client.query('SELECT * FROM massages ORDER BY id', (err, results) => {
       done();
       
       if (err) {
