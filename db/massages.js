@@ -55,3 +55,25 @@ module.exports.getMassage = (req, res, next) => {
   
 };
 
+module.exports.createMassage = (req, res, next) => {
+  pg.connect(config, (err, client, done) => {
+    if (err) {
+      done();
+      console.log(err);
+      res.status(500).json({success: false, data: err});
+    }
+    console.log(req.body);
+    client.query('INSERT INTO massages (name) VALUES ($1) RETURNING id', [req.body.name], (err, results) => {
+      done();
+      
+      if (err) {
+        console.error('Error with query', err);
+      }
+
+      res.rows = results.rows;
+      next();      
+    });
+  });
+  
+};
+

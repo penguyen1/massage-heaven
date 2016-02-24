@@ -14,7 +14,9 @@ router.get('/', db.getMassages,  (req, res) => {
   res.render('massages/index', {massages: res.rows});
 });
 
-router.post('/', notImplemented);
+router.post('/', db.createMassage, (req, res) => {
+  res.redirect(`/massages/${res.rows[0].id}`);
+});
 
 router.get('/new', (req, res) => {
   res.render('massages/new', {massage: {name: ''}});
