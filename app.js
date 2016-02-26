@@ -2,7 +2,9 @@
 
 'use strict';
 
-require('dotenv').config();
+if(!process.env.NODE_ENV){
+  require('dotenv').config();
+}
 
 var path = require('path');
 var express = require('express');
@@ -15,7 +17,11 @@ var masseuistsRouter = require('./routes/masseuists');
 
 var app = express();
 
-app.use(morgan('dev'));
+if(process.env.NODE_ENV==='development'){
+  app.use(morgan('dev'));
+} else{
+  app.use(morgan('common'));
+}
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
